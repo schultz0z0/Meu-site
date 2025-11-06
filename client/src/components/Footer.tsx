@@ -70,14 +70,7 @@ export function Footer() {
               <li>
                 <Link href="/about">
                   <span className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
-                    Sobre Nós
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/portfolio">
-                  <span className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
-                    Portfólio
+                    Sobre Nós & Portfólio
                   </span>
                 </Link>
               </li>
@@ -89,11 +82,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact">
+                <a href="#contact">
                   <span className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
                     Contato
                   </span>
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

@@ -338,6 +338,58 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Public Routes - Contact Form
+  app.post("/api/public/contact", async (req: Request, res: Response) => {
+    try {
+      const { name, email, phone, message } = req.body;
+
+      if (!name || !email || !message) {
+        return res.status(400).json({ message: "Nome, email e mensagem são obrigatórios" });
+      }
+
+      // Save as lead in CRM
+      await storage.createLead({
+        name,
+        email,
+        phone: phone || "",
+        source: "Website - Formulário de Contato",
+        notes: message,
+        status: "new"
+      });
+
+      return res.json({ message: "Mensagem enviada com sucesso!" });
+    } catch (error) {
+      console.error("Erro ao processar contato:", error);
+      return res.status(500).json({ message: "Erro ao enviar mensagem" });
+    }
+  });
+
+  // Public Routes - Newsletter Signup
+  app.post("/api/public/newsletter", async (req: Request, res: Response) => {
+    try {
+      const { email } = req.body;
+
+      if (!email) {
+        return res.status(400).json({ message: "Email é obrigatório" });
+      }
+
+      // Save as lead in CRM
+      await storage.createLead({
+        name: "Newsletter Subscriber",
+        email,
+        phone: "",
+        source: "Website - Newsletter",
+        notes: "Inscrito na newsletter",
+        status: "new"
+      });
+
+      return res.json({ message: "Inscrição realizada com sucesso!" });
+    } catch (error) {
+      console.error("Erro ao processar newsletter:", error);
+      return res.status(500).json({ message: "Erro ao processar inscrição" });
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;

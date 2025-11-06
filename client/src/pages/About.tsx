@@ -161,6 +161,68 @@ export default function About() {
             </div>
 
             <div className="mb-20">
+              <h2 className="text-4xl font-bold text-center mb-12">Nosso Portfólio</h2>
+              <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+                Conheça alguns dos projetos que desenvolvemos e os resultados alcançados.
+              </p>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  {
+                    title: "Chatbot Inteligente - E-commerce",
+                    category: "IA Conversacional",
+                    description: "Implementação de chatbot com NLP que aumentou as vendas em 35%",
+                    metrics: ["35% ↑ vendas", "24/7 atendimento", "90% satisfação"]
+                  },
+                  {
+                    title: "Análise Preditiva - Logística",
+                    category: "Machine Learning",
+                    description: "Sistema de previsão de demanda que reduziu custos em 28%",
+                    metrics: ["28% ↓ custos", "95% precisão", "Tempo real"]
+                  },
+                  {
+                    title: "Reconhecimento Visual - Segurança",
+                    category: "Computer Vision",
+                    description: "Detecção automática de anomalias com 98% de precisão",
+                    metrics: ["98% precisão", "Processamento em tempo real", "0 falsos positivos"]
+                  },
+                  {
+                    title: "Assistente Virtual - RH",
+                    category: "Automação",
+                    description: "Automatização de processos de recrutamento e triagem",
+                    metrics: ["70% ↓ tempo", "5000+ CVs/dia", "Auto-aprendizado"]
+                  },
+                  {
+                    title: "Análise de Sentimento - Marketing",
+                    category: "NLP",
+                    description: "Monitoramento de marca em redes sociais com IA",
+                    metrics: ["10M+ menções", "50+ idiomas", "Alertas em tempo real"]
+                  },
+                  {
+                    title: "Recomendação Personalizada - Streaming",
+                    category: "Deep Learning",
+                    description: "Sistema de recomendação que aumentou engajamento em 45%",
+                    metrics: ["45% ↑ engajamento", "2M+ usuários", "Personalização 1:1"]
+                  }
+                ].map((project, index) => (
+                  <Card key={index} className="p-6 hover-elevate transition-all group">
+                    <Badge className="mb-3">{project.category}</Badge>
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.metrics.map((metric, idx) => (
+                        <span key={idx} className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">
+                          {metric}
+                        </span>
+                      ))}
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <div className="mb-20">
               <Card className="p-8 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 border-none">
                 <div className="flex items-start gap-4 mb-6">
                   <Award className="h-12 w-12 text-primary flex-shrink-0" />

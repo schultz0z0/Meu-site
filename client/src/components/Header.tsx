@@ -59,30 +59,29 @@ export function Header() {
                 variant={isActive("/about") ? "secondary" : "ghost"}
                 className={`hover-elevate active-elevate-2 ${!isScrolled ? 'text-white hover:bg-white/10' : ''}`}
               >
-                Sobre
+                Sobre Nós
               </Button>
             </Link>
+            <Link href="/blog" data-testid="link-nav-blog">
+              <Button
+                variant={isActive("/blog") ? "secondary" : "ghost"}
+                className={`hover-elevate active-elevate-2 ${!isScrolled ? 'text-white hover:bg-white/10' : ''}`}
+              >
+                Blog
+              </Button>
+            </Link>
+            <a href="#contact">
+              <Button
+                variant="ghost"
+                className={`hover-elevate active-elevate-2 ${!isScrolled ? 'text-white hover:bg-white/10' : ''}`}
+              >
+                Contato
+              </Button>
+            </a>
           </nav>
 
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <Link href="/login" data-testid="link-login">
-              <Button 
-                variant="ghost" 
-                className={`hidden sm:flex hover-elevate active-elevate-2 ${!isScrolled ? 'text-white hover:bg-white/10' : ''}`}
-              >
-                Entrar
-              </Button>
-            </Link>
-            <Link href="/admin" data-testid="link-admin">
-              <Button 
-                variant="default" 
-                data-testid="button-admin"
-                className={!isScrolled ? 'bg-white text-primary hover:bg-white/90' : ''}
-              >
-                Admin
-              </Button>
-            </Link>
             <Button
               variant="ghost"
               size="icon"
@@ -109,14 +108,19 @@ export function Header() {
             </Link>
             <Link href="/about">
               <Button variant="ghost" className="w-full justify-start" data-testid="mobile-link-about">
-                Sobre
+                Sobre Nós
               </Button>
             </Link>
-            <Link href="/login">
-              <Button variant="ghost" className="w-full justify-start" data-testid="mobile-link-login">
-                Entrar
+            <Link href="/blog">
+              <Button variant="ghost" className="w-full justify-start" data-testid="mobile-link-blog">
+                Blog
               </Button>
             </Link>
+            <a href="#contact">
+              <Button variant="ghost" className="w-full justify-start">
+                Contato
+              </Button>
+            </a>
           </div>
         )}
       </div>

@@ -4,6 +4,7 @@ import { CategorySection } from "@/components/CategorySection";
 import { FeaturedServices } from "@/components/FeaturedServices";
 import { Testimonials } from "@/components/Testimonials";
 import { CTASection } from "@/components/CTASection";
+import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <FeaturedServices />
         <Testimonials />
         <CTASection />
+        <ContactForm />
       </main>
       <Footer />
     </div>

@@ -11,6 +11,7 @@ import Home from "@/pages/Home";
 import Services from "@/pages/Services";
 import ServiceDetail from "@/pages/ServiceDetail";
 import About from "@/pages/About";
+import Blog from "@/pages/Blog";
 import Admin from "@/pages/Admin";
 import Login from "@/pages/Login";
 import NotFound from "@/pages/not-found";
@@ -39,6 +40,11 @@ function Router() {
         <Route path="/about">
           <PageTransition>
             <About />
+          </PageTransition>
+        </Route>
+        <Route path="/blog">
+          <PageTransition>
+            <Blog />
           </PageTransition>
         </Route>
         <Route path="/login">
