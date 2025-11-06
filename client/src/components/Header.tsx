@@ -23,8 +23,8 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border"
-          : "bg-transparent"
+          ? "bg-background/95 backdrop-blur-lg border-b border-border shadow-lg"
+          : "bg-black/30 backdrop-blur-sm"
       }`}
       data-testid="header-main"
     >
@@ -32,8 +32,8 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" data-testid="link-logo">
             <div className="flex items-center gap-2 hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3">
-              <Sparkles className="h-6 w-6 text-primary" />
-              <span className="font-bold text-xl">AI Services</span>
+              <Sparkles className={`h-6 w-6 ${isScrolled ? 'text-primary' : 'text-white'}`} />
+              <span className={`font-bold text-xl ${isScrolled ? '' : 'text-white'}`}>AI Services</span>
             </div>
           </Link>
 
@@ -41,7 +41,7 @@ export function Header() {
             <Link href="/" data-testid="link-nav-home">
               <Button
                 variant={isActive("/") ? "secondary" : "ghost"}
-                className="hover-elevate active-elevate-2"
+                className={`hover-elevate active-elevate-2 ${!isScrolled ? 'text-white hover:bg-white/10' : ''}`}
               >
                 Início
               </Button>
@@ -49,7 +49,7 @@ export function Header() {
             <Link href="/services" data-testid="link-nav-services">
               <Button
                 variant={isActive("/services") ? "secondary" : "ghost"}
-                className="hover-elevate active-elevate-2"
+                className={`hover-elevate active-elevate-2 ${!isScrolled ? 'text-white hover:bg-white/10' : ''}`}
               >
                 Serviços
               </Button>
@@ -57,7 +57,7 @@ export function Header() {
             <Link href="/about" data-testid="link-nav-about">
               <Button
                 variant={isActive("/about") ? "secondary" : "ghost"}
-                className="hover-elevate active-elevate-2"
+                className={`hover-elevate active-elevate-2 ${!isScrolled ? 'text-white hover:bg-white/10' : ''}`}
               >
                 Sobre
               </Button>
@@ -67,19 +67,26 @@ export function Header() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <Link href="/login" data-testid="link-login">
-              <Button variant="ghost" className="hidden sm:flex hover-elevate active-elevate-2">
+              <Button 
+                variant="ghost" 
+                className={`hidden sm:flex hover-elevate active-elevate-2 ${!isScrolled ? 'text-white hover:bg-white/10' : ''}`}
+              >
                 Entrar
               </Button>
             </Link>
             <Link href="/admin" data-testid="link-admin">
-              <Button variant="default" data-testid="button-admin">
+              <Button 
+                variant="default" 
+                data-testid="button-admin"
+                className={!isScrolled ? 'bg-white text-primary hover:bg-white/90' : ''}
+              >
                 Admin
               </Button>
             </Link>
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className={`md:hidden ${!isScrolled ? 'text-white hover:bg-white/10' : ''}`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               data-testid="button-mobile-menu"
             >

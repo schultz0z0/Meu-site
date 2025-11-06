@@ -12,28 +12,27 @@ export function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-hero" />
       
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+      <div className="absolute inset-0 overflow-hidden opacity-30">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-32 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 backdrop-blur-md border border-primary/20 rounded-full mb-6">
-          <Sparkles className="h-4 w-4 text-primary" />
-          <span className="text-sm font-medium text-white">Impulsione seu negócio com IA</span>
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 backdrop-blur-md border border-primary/30 rounded-full mb-6 shadow-lg">
+          <Sparkles className="h-4 w-4 text-white" />
+          <span className="text-sm font-medium text-white text-shadow-hero">Impulsione seu negócio com IA</span>
         </div>
 
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight" data-testid="text-hero-title">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight text-shadow-hero" data-testid="text-hero-title">
           Soluções de IA
           <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 via-blue-300 to-cyan-300 drop-shadow-[0_2px_10px_rgba(168,85,247,0.5)]">
             Sob Medida
           </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto" data-testid="text-hero-subtitle">
-          Desenvolvimento de Influenciadores IA, Agents Inteligentes, Micro-SaaS e soluções completas. 
-          Transforme sua visão em realidade com tecnologia de ponta.
+        <p className="text-xl md:text-2xl text-white mb-12 max-w-2xl mx-auto text-shadow-hero leading-relaxed" data-testid="text-hero-subtitle">
+          Transforme sua visão em realidade com IA de ponta
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
