@@ -183,6 +183,161 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // CRM - Leads Routes (Protected)
+  app.get("/api/admin/leads", requireAuth, async (_req: Request, res: Response) => {
+    try {
+      const leads = await storage.getAllLeads();
+      res.json(leads);
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao buscar leads" });
+    }
+  });
+
+  app.post("/api/admin/leads", requireAuth, async (req: Request, res: Response) => {
+    try {
+      const lead = await storage.createLead(req.body);
+      res.json(lead);
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao criar lead" });
+    }
+  });
+
+  app.put("/api/admin/leads/:id", requireAuth, async (req: Request, res: Response) => {
+    try {
+      const lead = await storage.updateLead(req.params.id, req.body);
+      if (!lead) {
+        return res.status(404).json({ message: "Lead não encontrado" });
+      }
+      res.json(lead);
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao atualizar lead" });
+    }
+  });
+
+  app.delete("/api/admin/leads/:id", requireAuth, async (req: Request, res: Response) => {
+    try {
+      const deleted = await storage.deleteLead(req.params.id);
+      if (!deleted) {
+        return res.status(404).json({ message: "Lead não encontrado" });
+      }
+      res.json({ message: "Lead deletado com sucesso" });
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao deletar lead" });
+    }
+  });
+
+  // CRM - Customers Routes (Protected)
+  app.get("/api/admin/customers", requireAuth, async (_req: Request, res: Response) => {
+    try {
+      const customers = await storage.getAllCustomers();
+      res.json(customers);
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao buscar clientes" });
+    }
+  });
+
+  app.post("/api/admin/customers", requireAuth, async (req: Request, res: Response) => {
+    try {
+      const customer = await storage.createCustomer(req.body);
+      res.json(customer);
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao criar cliente" });
+    }
+  });
+
+  app.put("/api/admin/customers/:id", requireAuth, async (req: Request, res: Response) => {
+    try {
+      const customer = await storage.updateCustomer(req.params.id, req.body);
+      if (!customer) {
+        return res.status(404).json({ message: "Cliente não encontrado" });
+      }
+      res.json(customer);
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao atualizar cliente" });
+    }
+  });
+
+  // CRM - Interactions Routes (Protected)
+  app.get("/api/admin/interactions", requireAuth, async (_req: Request, res: Response) => {
+    try {
+      const interactions = await storage.getAllInteractions();
+      res.json(interactions);
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao buscar interações" });
+    }
+  });
+
+  app.post("/api/admin/interactions", requireAuth, async (req: Request, res: Response) => {
+    try {
+      const interaction = await storage.createInteraction(req.body);
+      res.json(interaction);
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao criar interação" });
+    }
+  });
+
+  // CRM - Pipeline Stages Routes (Protected)
+  app.get("/api/admin/pipeline-stages", requireAuth, async (_req: Request, res: Response) => {
+    try {
+      const stages = await storage.getAllPipelineStages();
+      res.json(stages);
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao buscar etapas do pipeline" });
+    }
+  });
+
+  app.post("/api/admin/pipeline-stages", requireAuth, async (req: Request, res: Response) => {
+    try {
+      const stage = await storage.createPipelineStage(req.body);
+      res.json(stage);
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao criar etapa do pipeline" });
+    }
+  });
+
+  // CRM - Deals Routes (Protected)
+  app.get("/api/admin/deals", requireAuth, async (_req: Request, res: Response) => {
+    try {
+      const deals = await storage.getAllDeals();
+      res.json(deals);
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao buscar negócios" });
+    }
+  });
+
+  app.post("/api/admin/deals", requireAuth, async (req: Request, res: Response) => {
+    try {
+      const deal = await storage.createDeal(req.body);
+      res.json(deal);
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao criar negócio" });
+    }
+  });
+
+  app.put("/api/admin/deals/:id", requireAuth, async (req: Request, res: Response) => {
+    try {
+      const deal = await storage.updateDeal(req.params.id, req.body);
+      if (!deal) {
+        return res.status(404).json({ message: "Negócio não encontrado" });
+      }
+      res.json(deal);
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao atualizar negócio" });
+    }
+  });
+
+  app.delete("/api/admin/deals/:id", requireAuth, async (req: Request, res: Response) => {
+    try {
+      const deleted = await storage.deleteDeal(req.params.id);
+      if (!deleted) {
+        return res.status(404).json({ message: "Negócio não encontrado" });
+      }
+      res.json({ message: "Negócio deletado com sucesso" });
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao deletar negócio" });
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;
